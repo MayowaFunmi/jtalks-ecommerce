@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d923b099-914b-4eb5-b4bf-fa508a6f1a53" name="Changes" comment="" />
+    <list default="true" id="d923b099-914b-4eb5-b4bf-fa508a6f1a53" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jtalks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jtalks_institute/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks_institute/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jtalks_institute/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks_institute/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/cart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/context_processors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/products/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/templates/products/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/products/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/products/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,5 +85,17 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

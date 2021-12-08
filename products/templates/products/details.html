@@ -70,6 +70,13 @@
         <!-- <p>{{course.description|linebreaks }}</p> -->
       </div>
       <span>${{course.price}}</span>
+      <div>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input id="btn_1" type="submit" value="Add to cart">
+        </form>
+      </div>
     </div>
     <h3>Instructor</h3>
     <div class="tutor">

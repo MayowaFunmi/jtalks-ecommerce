@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views import View
 from courses.models import Category, Courses
-from products.cart import Cart
-from products.forms import CartAddProductForm
+from cart.cart import Cart
+from cart.forms import CartAddProductForm
 from products.models import Product
 
 
@@ -13,6 +13,9 @@ def home(request):
     cart = Cart(request)
     categories = Category.objects.all()
     courses = Courses.objects.all().order_by('-id')[:2]
+    for course in courses:
+        print(course.id)
+        print(course.slug)
     total_data = Courses.objects.count()
 
     # for products
@@ -36,7 +39,6 @@ def load_more_data(request):
     offset = int(request.GET['offset'])
     limit = int(request.GET['limit'])
     data = Courses.objects.order_by('-id')[offset:offset+limit]
-    print(data)
     t = render_to_string('jtalks/more_courses.html', {'data': data})
     return JsonResponse({'data': t})
 

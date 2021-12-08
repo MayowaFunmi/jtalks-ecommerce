@@ -38,6 +38,7 @@ urlpatterns = [
     path('course/', include('courses.urls', namespace='courses')),
     path('product/', include('products.urls', namespace='product')),
     path('users/', include('users.urls', namespace='users')),
+    path('cart/', include('cart.urls', namespace='cart')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]

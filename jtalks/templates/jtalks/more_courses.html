@@ -1,7 +1,7 @@
 {% for course in data %}
   <div class="card product-box" style="width: 18rem;">
-    <div style="width: 100%;">
-      <img src="{{ course.content_file.url }}" class="card-img-top" alt="{{ course.name }}" style="max-width: 100%;">
+    <div>
+      <img src="{{ course.content_file.url }}" class="card-img-top" alt="{{ course.name }}" height="200">
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ course.name }}</h5>

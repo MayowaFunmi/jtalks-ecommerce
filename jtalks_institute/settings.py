@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # 'sass_processor'
     'star_ratings',
     'products',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +157,7 @@ SASS_PROCESSOR_ROOT = STATIC_ROOT
 LOGIN_URL = '/users/login/'
 
 CART_SESSION_ID = 'cart'    # key to store the cart in the user session
+SITE_ID = 1
 
 # MEDIA 
 MEDIA_URL = "/media/"
