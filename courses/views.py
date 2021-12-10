@@ -1,10 +1,13 @@
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.views import generic, View
 from .forms import ReviewAdd
-from .models import Category, Courses, CourseReview
+from .models import Category, Courses, CourseReview, UserLibrary
 
+User = get_user_model()
 
 # # Create your views here.
 # class CourseListView(generic.ListView):
@@ -86,8 +89,6 @@ class SaveReview(View):
         data = {
             'course': course
         }
-        print(data)
-
         return JsonResponse(data)
 
 
@@ -99,3 +100,31 @@ def load_more_review(request):
     data = CourseReview.objects.filter(course=course).order_by('-id')[offset:offset+limit]
     t = render_to_string('courses/more_review.html', {'data': data})
     return JsonResponse({'data': t})
+
+
+class UserCourse(View):
+    def get(self, request):
+        #user_id = request.GET.get('user_id', None)
+        id = request.GET.get('id', None)
+        #price = request.GET.get('price', None)
+        course = Courses.objects.get(id=id)
+        data = {}
+        x = UserLibrary.objects.filter(user=request.user, courses__id=id)
+        if x:
+            data['error'] = 'You already have this course in your library'
+            return JsonResponse(data)
+        else:
+            user_library = UserLibrary(user=request.user)
+            user_library.save()
+            user_library.courses.add(course)
+
+            library = UserLibrary.objects.get(id=user_library.id)
+            lib_course = list(library.courses.values_list())
+            data['courses'] = lib_course
+            return JsonResponse(data)
+
+
+@login_required
+def user_library(request):
+    my_library = UserLibrary.objects.all()
+    return render(request, 'courses/content/user_library.html', {'my_library': my_library})

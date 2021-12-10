@@ -38,8 +38,17 @@
           <li><a href="about.html">About</a></li>
           <li><a href="{% url 'forum:post_list' %}">Blog</a></li>
           <li><a href="{% url 'forum:post_new' %}">{% block blog_new %}{% endblock blog_new %}</a></li>
-          <li><a href="#">Products</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Menu</button>
+              <div class="dropdown-content">
+                <a href="#">Courses (PDF)</a>
+                <a href="#">Courses (Video)</a>
+                <a href="#products_list">Products (hoodies and t-shirt)</a>
+              </div>
+            </div>
+          </li>
           {% if request.user.is_authenticated %}
             <li>
               <div class="dropdown">

@@ -2,10 +2,7 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Avg
-from django.urls import reverse
-
-
-# Create your models here.
+from products.models import random_code
 
 User = get_user_model()
 
@@ -48,6 +45,8 @@ class Courses(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name = 'Course'
+        verbose_name_plural = 'Courses'
 
     def __str__(self):
         return self.name
@@ -89,14 +88,17 @@ class CourseReview(models.Model):
 
 
 class UserLibrary(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='library')
-    courses = models.ManyToManyField(Courses, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='library')
+    courses = models.ManyToManyField(Courses)
+    paid = models.BooleanField(default=False)
+    reference_id = models.CharField(max_length=200, null=True, blank=True)
+    order_id = models.CharField(default=random_code, max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "UserLibraries"
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 """
     def price_display(self):

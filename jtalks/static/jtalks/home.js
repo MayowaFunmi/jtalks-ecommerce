@@ -127,22 +127,40 @@ $(document).ready(function() {
 
   // add to user library
   // this should be for payment first, not library
-  $('#enroll_btn').on('click', function() {
+  $('#enroll_btn').on('click', function(e) {
+    e.preventDefault();
+    let _user_id = $(this).attr('data-user-id');
     let _user = $(this).attr('data-user');
     let _id = $(this).attr('data-course-id');
-    //console.log(_user, _id)
-
+    let _price = $(this).attr('data-price');
+    console.log(_user_id, _id, _price)
+    /*
+    get data
+    save course in user library as wishlist
+    from wishlist, click a button to make payment
+    redirect to payment page
+    make payment
+    if payment is successful, i.e if paid == True
+    add course to user library
+    display user library page
+    */
     $.ajax({
-      url: '/course/add-to-library/',
+      url: '/course/create_user_library/',
       data: {
-        'user': _user,
-        'id': _id
+        'user_id': _user_id,
+        'id': _id,
+        'price': _price
       },
       dataType: 'json',
       beforeSend: function() {
         $('#enroll_btn').attr('disabled', true);
         $('.load-more-icon').addClass('fa-spinner')
       },
+      success: function(data) {
+        console.log(data)
+        $('#enroll_btn').text('Redirecting... Please Wait')
+        window.location.replace('/course/user_library')
+      }
     })
   })
 

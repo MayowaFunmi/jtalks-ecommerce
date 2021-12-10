@@ -56,8 +56,8 @@
                     </table>
                     <p class="ajaxRes"></p>
                     <div class="modal-footer">
-                  <input id="review_submit" type="submit" class="btn btn-primary" value="Add Review">
-                </div>
+                      <input id="review_submit" type="submit" class="btn btn-primary" value="Add Review">
+                    </div>
                   </form>
                 </div>
                 
@@ -123,17 +123,23 @@
       <p><i class="far fa-trophy-alt"></i>Certificate of completion</p>
       {% if request.user.is_authenticated %}
         <div class="enroll-btn">
-          <a id="enroll_btn" class="blue" href="#" data-course-id="{{ course.id }}" data-user="{{ request.user }}">
+          <a id="enroll_btn" class="blue" href="#" data-course-id="{{ course.id }}" data-user="{{ request.user }}" data-user-id="{{ request.user.id }}" data-price="{{course.price}}">
             Enroll Course
             <i class="fas fa-angle-double-right load-more-icon"></i>
           </a>
+          <!--
+          <div>
+            <button id="enroll_btn" type="button" class="blue" data-bs-toggle="modal" data-bs-target="#enroll_course">Enroll</button>
+          </div>
+          -->
         </div>
       {% else %}
         <div class="enroll-btn">
           <a class="blue" href="{% url 'users:login' %}?next={{request.path}}">Login To Enroll For this Course</a>
         </div>
       {% endif %}
-  </div>
+    </div>
+    
     <h3>User Reviews - {{ total_data }}</h3>
   <div class="review-list">
     {% for review in all_reviews %}

@@ -1,0 +1,30 @@
+{% extends 'jtalks/base.html' %}
+{%load static%}
+
+{% block content %}
+  <div>
+    <center>Welcome to your library, {{ request.user.username }}</center>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h1>Wish List</h1>
+        {% for library in my_library %}
+          {% if not library.paid %}
+            {{ library }}<br>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="col-6">
+        <h1>Paid Courses</h1>
+        <h3>All courses you have successfully paid for will show here</h3>
+        {% for library in my_library %}
+          {% if library.paid %}
+            {{ library }}
+          {% endif %}
+        {% endfor %}
+      </div>
+  </div>
+  </div>
+{% endblock %}
