@@ -55,7 +55,7 @@
                 <button class="dropbtn">Personal</button>
                 <div class="dropdown-content">
                   <a href="{% url 'users:user_profile' request.user.id %}">Your Profile</a>
-                  <a href="#">Your Library</a>
+                  <a href="{% url 'courses:user_library' request.user.username %}">Your Library</a>
                 </div>
               </div>
             </li>

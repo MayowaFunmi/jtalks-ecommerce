@@ -1,11 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.views import generic, View
 from .forms import ReviewAdd
 from .models import Category, Courses, CourseReview, UserLibrary
+from .render import Render
 
 User = get_user_model()
 
@@ -70,7 +73,7 @@ def blog_category(request, category):
     return render(request, "forum/category_post_list.html", context)
 
 
-class SaveReview(View):
+class SaveReview(LoginRequiredMixin, View):
     def get(self, request):
         course_id = request.GET.get('id', None)
         review = request.GET.get('review', None)
@@ -102,11 +105,9 @@ def load_more_review(request):
     return JsonResponse({'data': t})
 
 
-class UserCourse(View):
+class UserCourse(LoginRequiredMixin, View):
     def get(self, request):
-        #user_id = request.GET.get('user_id', None)
         id = request.GET.get('id', None)
-        #price = request.GET.get('price', None)
         course = Courses.objects.get(id=id)
         data = {}
         x = UserLibrary.objects.filter(user=request.user, courses__id=id)
@@ -125,6 +126,55 @@ class UserCourse(View):
 
 
 @login_required
-def user_library(request):
-    my_library = UserLibrary.objects.all()
+def user_library(request, username):
+    user = get_object_or_404(User, username=username)
+    my_library = UserLibrary.objects.filter(user=user)
+
+    if request.method == 'POST':
+        course_id = request.POST['course_id']
+        course_price = request.POST['course_price']
+        course = UserLibrary.objects.get(courses__id=course_id)
+        """for c in course.courses.all():
+            print(c.name)"""
+        context = {
+            'course': course,
+            'course_price': course_price,
+            'email': request.user.email,
+            'phone': request.user.phone_number,
+        }
+        return render(request, 'courses/content/pay_for_courses.html', context)
+
     return render(request, 'courses/content/user_library.html', {'my_library': my_library})
+
+
+class AjaxCoursePayment(LoginRequiredMixin, View):
+    def get(self, request):
+        id = request.GET.get('id', None) # id of UserLibrary
+        reference_id = request.GET.get('reference', None)
+
+        course_detail = UserLibrary.objects.get(id=id)
+        data = {}
+        course_detail.reference_id = reference_id
+        course_detail.paid = True
+        course_detail.payment_date = timezone.now()
+        course_detail.save()
+
+        if course_detail.paid:
+            data['message'] = "Your Payment was successfully received"
+        else:
+            data['message'] = "Your Payment Failed!!!"
+        return JsonResponse(data)
+
+
+class CoursePdf(LoginRequiredMixin, View):
+    def get(self, request, id):
+        course = get_object_or_404(UserLibrary, id=id)
+
+        today = timezone.now()
+
+        params = {
+            'id': id,
+            'today': today,
+            'course': course,
+        }
+        return Render.render('courses/course_pdf.html', params)

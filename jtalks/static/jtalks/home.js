@@ -159,7 +159,7 @@ $(document).ready(function() {
       success: function(data) {
         console.log(data)
         $('#enroll_btn').text('Redirecting... Please Wait')
-        window.location.replace('/course/user_library')
+        window.location.replace('/course/'+_user+'/user_library/')
       }
     })
   })

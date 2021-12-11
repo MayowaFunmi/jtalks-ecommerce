@@ -4,7 +4,7 @@ from .models import Category, Courses, CourseReview, UserLibrary
 
 @admin.register(Courses)
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'price','available', 'created', 'updated']
+    list_display = ['id', 'name', 'slug', 'price','available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
@@ -22,7 +22,13 @@ admin.site.register(CourseReview, CourseReviewAdmin)
 
 
 admin.site.register(Category)
-admin.site.register(UserLibrary)
+
+
+class UserLibraryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'paid', 'reference_id', 'order_id', 'payment_date']
+
+
+admin.site.register(UserLibrary, UserLibraryAdmin)
 
 # @admin.register(Category)
 # class CategoryAdmin(admin.ModelAdmin):

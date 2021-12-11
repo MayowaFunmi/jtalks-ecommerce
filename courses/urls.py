@@ -5,10 +5,11 @@ app_name = "courses"
 
 urlpatterns = [
     path('', views.course_list, name='course_list'),
-    #path('<slug:slug>/', views.course_list, name='course_list_by_category'),
     path('<int:id>/<slug:slug>/', views.course_detail, name='course_detail'),
     path('save_review/', views.SaveReview.as_view(), name='save_review'),
     path('load_more_review/', views.load_more_review, name='load_more_review'),
     path('create_user_library/', views.UserCourse.as_view(), name='user_library'),
-    path('user_library/', views.user_library, name='user_library')
+    path('<str:username>/user_library/', views.user_library, name='user_library'),
+    path('pay_for_courses/', views.AjaxCoursePayment.as_view(), name='pay_for_courses'),
+    path('<int:id>/print_course_pdf', views.CoursePdf.as_view(), name='print_course_pdf'),
 ]

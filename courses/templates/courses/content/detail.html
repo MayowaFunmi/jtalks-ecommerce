@@ -123,7 +123,7 @@
       <p><i class="far fa-trophy-alt"></i>Certificate of completion</p>
       {% if request.user.is_authenticated %}
         <div class="enroll-btn">
-          <a id="enroll_btn" class="blue" href="#" data-course-id="{{ course.id }}" data-user="{{ request.user }}" data-user-id="{{ request.user.id }}" data-price="{{course.price}}">
+          <a id="enroll_btn" class="blue" href="#" data-course-id="{{ course.id }}" data-user="{{ request.user.username }}" data-user-id="{{ request.user.id }}" data-price="{{course.price}}">
             Enroll Course
             <i class="fas fa-angle-double-right load-more-icon"></i>
           </a>

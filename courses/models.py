@@ -44,7 +44,7 @@ class Courses(models.Model):
     # What you will learn
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('id',)
         verbose_name = 'Course'
         verbose_name_plural = 'Courses'
 
@@ -93,8 +93,11 @@ class UserLibrary(models.Model):
     paid = models.BooleanField(default=False)
     reference_id = models.CharField(max_length=200, null=True, blank=True)
     order_id = models.CharField(default=random_code, max_length=10, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    payment_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
+        ordering = ('id',)
         verbose_name_plural = "UserLibraries"
 
     def __str__(self):
