@@ -22,13 +22,10 @@
             </div>
         </div>
     </div>
+{% endblock content %}
 
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{% block js %}
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
         window.onload=function(){
@@ -40,7 +37,7 @@
             var handler = PaystackPop.setup({
                 key: 'pk_test_ce8979497f703eb955ab5ceb19fc54cdcb615e0d',
                 email:'{{email}}',
-                amount: parseFloat(price) * 100,
+                amount: parseInt(price) * 100,
                 currency: "NGN",
                 metadata: {
                     custom_fields: [
@@ -90,4 +87,4 @@
             handler.openIframe();
         }
     </script>
-{% endblock content %}
+{% endblock js %}

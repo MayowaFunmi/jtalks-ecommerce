@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django_sass',
     'forum',
     # 'sass_processor'
-    'star_ratings',
     'products',
     'cart',
 ]

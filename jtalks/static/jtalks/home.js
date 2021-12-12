@@ -1,6 +1,5 @@
 // code to load courses in home.html
 $(document).ready(function() {
-  //console.log('working')
   $('#load_more').on('click', function() {
     var _currentCourses = $('.product-box').length;
     var _limit = $(this).attr('data-limit')

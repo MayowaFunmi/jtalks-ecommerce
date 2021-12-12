@@ -1,6 +1,5 @@
 {% extends 'jtalks/base.html' %}
 {% load static %}
-{% load ratings %}
 
 <!-- home section starts  -->
 {%block content %}
@@ -101,7 +100,7 @@
               </div>
               <div class="card-body">
                 <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;">
-                  <a href="{% url 'courses:course_detail' course.id course.slug %}">
+                  <a href="/course/{{ course.id }}/{{ course.slug }}/">
                     Read More
                   </a>
                 </button>

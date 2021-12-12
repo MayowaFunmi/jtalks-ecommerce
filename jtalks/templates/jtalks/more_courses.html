@@ -9,29 +9,10 @@
     </div>
     <div class="card-body">
       <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;">
-        <a href="{% url 'courses:course_detail' course.id course.slug %}">
+        <a href="/course/{{ course.id }}/{{ course.slug }}/">
           Read More
         </a>
       </button>
     </div>
   </div>
 {% endfor %}
-
-<!--
-<div class="courses product-box">
-    <div class="course_image" style="width: 100%">
-      <img src="{{ course.content_file.url }}" alt=" Content file image" style="max-width: 50%;"/>
-    </div>
-    <div class="details">
-      <span>{{ course.created }}</span>
-      <h6>{{ course.overview|truncatewords_html:20 }}</h6>
-      <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;">
-        <a href="{% url 'courses:course_detail' course.id course.slug %}">
-          Read More
-        </a>
-      </button>
-    </div>
-    <div class="cost">${{ course.price }}</div>
-    <hr>
-  </div>
--->
