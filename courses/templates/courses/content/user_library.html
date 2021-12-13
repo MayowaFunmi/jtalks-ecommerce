@@ -62,8 +62,14 @@
                 </ul>
                 <div class="card-body">
                   <a href="{% url 'courses:course_detail' course.id course.slug %}" class="btn btn-primary">Course Details</a>
-                  <a id="pay_course" href="#" class="btn btn-primary">Watch Video</a>
                   <a id="download_pdf" href="/media/pdf_courses/{{ course.slug }}.pdf" class="btn btn-primary" download>Download PDF</a>
+                </div>
+                
+                <div>
+                  <video width="300" height="240" controls controlsList="nodownload">
+                    <source src="{{ MEDIA_URL}}{{ course.course_video }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             {% endfor %}

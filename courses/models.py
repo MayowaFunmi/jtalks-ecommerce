@@ -25,14 +25,19 @@ def pdf_directory(instance, filename):
     return f'pdf_courses/{instance.slug}.pdf'
 
 
+def video_directory(instance, filename):
+    return f'video_courses/{instance.slug}.mp4'
+
+
 class Courses(models.Model):
-    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     categories = models.ManyToManyField(Category, related_name='courses')
     name = models.CharField(max_length=100)
     overview = models.TextField()
     cover = models.ImageField(blank=True, null=True, upload_to="courses_cover/")
-    slug = models.SlugField(unique_for_date='created', max_length=250, null=True, blank=True)
-    course_pdf = models.FileField(upload_to=pdf_directory, null=True, blank=True)
+    slug = models.SlugField(unique_for_date='created', max_length=250)
+    course_pdf = models.FileField(upload_to=pdf_directory)
+    course_video = models.FileField(upload_to=video_directory)
+
     # Courses content
     content_url = models.URLField(blank=True, null=True)
     content_file = models.FileField(blank=True, null=True)
