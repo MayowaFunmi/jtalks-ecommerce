@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d923b099-914b-4eb5-b4bf-fa508a6f1a53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/content/pay_for_courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/content/pay_for_courses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courses/templates/courses/content/user_library.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/content/user_library.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/course_pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/course_pdf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/static/jtalks/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/static/jtalks/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks_institute/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks_institute/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks_institute/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks_institute/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/templates/products/pay_with_paystack.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/pay_with_paystack.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
