@@ -12,4 +12,6 @@ urlpatterns = [
     path('<str:username>/user_library/', views.user_library, name='user_library'),
     path('pay_for_courses/', views.AjaxCoursePayment.as_view(), name='pay_for_courses'),
     path('<int:id>/print_course_pdf', views.CoursePdf.as_view(), name='print_course_pdf'),
+    path('search_more_courses/', views.search_more_courses, name='search_more_courses'),
+    path('search_courses/', views.search_courses, name='search_courses')
 ]

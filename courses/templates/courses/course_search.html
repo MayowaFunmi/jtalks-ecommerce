@@ -1,19 +1,7 @@
 {% extends 'jtalks/base.html' %}
 {% load static %}
 
-<!-- home section starts  -->
 {%block content %}
-<section id="home">
-  <h2>Impact Before Profit</h2>
-  <p>
-    We offer premimum course on Cryptocurrency, Social Media Marketing, Website
-    Development and Personal Finance.
-  </p>
-  <div class="btn">
-    <a class="blue" href="#">Learn More</a>
-    <a class="yellow" href="#course">Visit Courses</a>
-  </div>
-</section>
 
 <section id="features">
   <h1>Awesome Feature</h1>
@@ -39,84 +27,13 @@
   </div>
 </section>
 
-
 <div>
   <div class="row">
-    <div class="col-6">
-      <h2>Featured Products here</h2>
-    </div>
-    
-    <div class="col-6">
-      <h2>Featured Courses here</h2>
-    </div>
-  </div>
-</div>
-
-<div>
-  <div class="row">
-    <div class="col-6">
-    <section id="course">
-      <h1>Courses Categories</h1>
-      {% for category in categories %}
-      <div class="category">
-        <i class="fas fa-hand-point-right hand"></i> {{ category }} <br>
-      </div>
-      {% endfor %}
-      
-      <!--Start Products List Section -->
-      <div class="products" id="products_list">
-        <h1>Our Popular Products</h1>
-        <form class="d-flex" method="POST" action="/search_products/">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Search Products" name="product" required>
-          <button class="btn btn-outline-success" type="submit" id="search_product">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-        <div class="products-cards" style="display: flex; flex-direction: row">
-          {% for product in products %}
-            <div class="card card-box" style="width: 18rem;">
-              <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" height="200">
-              <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <h5>${{ product.price }}</h5>
-              </div>
-              <div class="card-body">
-                <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;">
-                  <a style="color: white;" href="{% url 'product:product_detail' product.id product.slug %}">
-                    Read More
-                  </a>
-                </button>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-      <!--End Products List Section -->
-
-      <div>
-        <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;" id="load_more_products" data-total="{{ total_products }}" data-limit="3">
-          Load More
-          <i class="fas fa-angle-double-right load-more-icon"></i>
-        </button>
-        <p class="end-products" style="display: none;">No more products...</p>
-      </div>
-    </section>
-    </div>
-    
-    <div class="col-6">
+    <div class="col-12">
       <section id="course">
-        <h1>Our Popular Courses</h1>
-        <form class="d-flex" method="POST" action="/course/search_courses/">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Search Courses" name="course" required>
-          <button class="btn btn-outline-success" type="submit" id="search_course">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-        <p>All our courses are available in both pdf and video formats</p>
+        <h1>{{ search_results.count }} product{{ search_results.count|pluralize }} found for "{{ query_course }}" in courses:</h1>
         <div class="course-cards" style="display: flex; flex-direction: row">
-          {% for course in courses %}
+          {% for course in search_results %}
             <div class="card product-box" style="width: 18rem;">
               <div>
                 <img src="{{ course.content_file.url }}" class="card-img-top" alt="{{ course.name }}" height="200">
@@ -137,7 +54,7 @@
         </div>
         
         <div>
-          <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;" id="load_more" data-total="{{ total_data }}" data-limit="3">
+          <button style="text-decoration: none; padding: 13px 45px; background: rgb(50, 50, 136); border: 1px solid #412e88; border-radius: 11px; color: white;" id="search_more_courses" data-total="{{ total_courses }}" data-limit="3" data-search="{{ query_course }}">
             Load More
             <i class="fas fa-angle-double-right load-more-icon"></i>
           </button>

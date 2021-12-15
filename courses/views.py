@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Avg, Q
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
@@ -37,6 +38,19 @@ def course_detail(request, id, slug):
     course = get_object_or_404(Courses, id=id, slug=slug, available=True)
     all_reviews = CourseReview.objects.filter(course=course).order_by('-id')[:2]
     total_data = CourseReview.objects.filter(course=course).count()
+    #avg_reviews = CourseReview.objects.filter(course=course).aggregate(avg_rating=Avg('review_rating'))
+    user_reviews = CourseReview.objects.filter(course=course)
+    x = []
+    for r in user_reviews:
+        if int(r.review_rating) > 0:
+            x.append(int(r.review_rating))
+        else:
+            x.append(1)
+    if len(x) == 0:
+        x.append(1)
+    avg = sum(x) / len(x)
+
+    avg_reviews = round(avg, 2)
     reviews = CourseReview.objects.all()
     review_form = ReviewAdd()
 
@@ -54,7 +68,8 @@ def course_detail(request, id, slug):
         'can_add': can_add,
         'all_reviews': all_reviews,
         'total_data': total_data,
-        'reviews': reviews
+        'reviews': reviews,
+        'avg_reviews': avg_reviews
     }
     return render(request, 'courses/content/detail.html', context)
 
@@ -178,3 +193,27 @@ class CoursePdf(LoginRequiredMixin, View):
             'course': course,
         }
         return Render.render('courses/course_pdf.html', params)
+
+
+def search_courses(request):
+    query_course = request.POST.get('course')
+    search_data = Q(name__icontains=query_course) | Q(overview__icontains=query_course)
+    search_results = Courses.objects.filter(search_data).distinct()
+    print(search_results)
+    total_courses = search_results.count()
+    context = {
+        'search_results': search_results,
+        'query_course': query_course,
+        'total_courses': total_courses
+    }
+    return render(request, 'courses/course_search.html', context)
+
+
+def search_more_courses(request):
+    offset = int(request.GET['offset'])
+    limit = int(request.GET['limit'])
+    search = request.GET['search']
+    search_data = Q(name__icontains=search)
+    data = Courses.objects.filter(search_data).order_by('id')[offset:offset+limit]
+    t = render_to_string('courses/search_courses.html', {'data': data})
+    return JsonResponse({'data': t})

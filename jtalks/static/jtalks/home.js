@@ -132,17 +132,7 @@ $(document).ready(function() {
     let _user = $(this).attr('data-user');
     let _id = $(this).attr('data-course-id');
     let _price = $(this).attr('data-price');
-    console.log(_user_id, _id, _price)
-    /*
-    get data
-    save course in user library as wishlist
-    from wishlist, click a button to make payment
-    redirect to payment page
-    make payment
-    if payment is successful, i.e if paid == True
-    add course to user library
-    display user library page
-    */
+
     $.ajax({
       url: '/course/create_user_library/',
       data: {
@@ -161,6 +151,80 @@ $(document).ready(function() {
         window.location.replace('/course/'+_user+'/user_library/')
       }
     })
-  })
+  });
+
+
+  // search more products
+
+  $('#search_more_products').on('click', function() {
+    var _currentProducts = $('.card-box').length;
+    var _limit = $(this).attr('data-limit')
+    var _total = $(this).attr('data-total')
+    var _search = $(this).attr('data-search')
+
+
+    // start ajax
+    $.ajax({
+      url: '/search_more_products/',
+      data: {
+        limit: _limit,
+        offset: _currentProducts,
+        search: _search
+      },
+      dataType: 'json',
+      beforeSend: function() {
+        $('#search_more_products').attr('disabled', true);
+        $('.load-more-icon').addClass('fa-spinner')
+      },
+      success: function(res) {
+        $('.products-cards').append(res.data)
+        $('#search_more_products').attr('disabled', false);
+        $('.load-more-icon').removeClass('fa-spinner')
+
+        if (_currentProducts == _total) {
+          $('#search_more_products').remove();
+          $('.end-products').show();
+        }
+      }
+    })
+        // end ajax
+  });
+
+
+  // search more courses
+
+  $('#search_more_courses').on('click', function() {
+    let _currentCourses = $('.product-box').length;
+    var _limit = $(this).attr('data-limit')
+    var _total = $(this).attr('data-total')
+    var _search = $(this).attr('data-search')
+
+
+    // start ajax
+    $.ajax({
+      url: '/course/search_more_courses/',
+      data: {
+        limit: _limit,
+        offset: _currentCourses,
+        search: _search
+      },
+      dataType: 'json',
+      beforeSend: function() {
+        $('#search_more_courses').attr('disabled', true);
+        $('.load-more-icon').addClass('fa-spinner')
+      },
+      success: function(res) {
+        $('.course-cards').append(res.data)
+        $('#search_more_courses').attr('disabled', false);
+        $('.load-more-icon').removeClass('fa-spinner')
+
+        if (_currentCourses == _total) {
+          $('#search_more_courses').remove();
+          $('.product_end').show();
+        }
+      }
+    })
+        // end ajax
+  });
 
 });

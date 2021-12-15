@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -50,6 +51,16 @@ def load_more_products(request):
     t = render_to_string('jtalks/more_products.html', {'data': data})
     return JsonResponse({'data': t})
 
+
+def search_more_products(request):
+    offset = int(request.GET['offset'])
+    limit = int(request.GET['limit'])
+    search = request.GET['search']
+    search_data = Q(name__icontains=search)
+    data = Product.objects.filter(search_data).order_by('id')[offset:offset+limit]
+    t = render_to_string('jtalks/search_products.html', {'data': data})
+    return JsonResponse({'data': t})
+
 """
 def home(request):
     categories = Category.objects.all()
@@ -99,3 +110,17 @@ class GetCourses(View):
             courses.append(cors)
         data['courses'] = courses
         return JsonResponse(data)
+
+
+def search_products(request):
+    query_product = request.POST.get('product')
+    search_data = Q(name__icontains=query_product)
+    search_results = Product.objects.filter(search_data).distinct()
+    print(search_results)
+    total_products = search_results.count()
+    context = {
+        'search_results': search_results,
+        'query_product': query_product,
+        'total_products': total_products
+    }
+    return render(request, 'jtalks/product_search.html', context)

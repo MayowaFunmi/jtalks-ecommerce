@@ -24,7 +24,7 @@
             <i class="far fa-star"></i>
           </div>
           <div class="review">
-            <h6>Reviews - 4.5/5 <i class="far fa-star text-warning"></i></h6>
+            <h6>Reviews - {{ avg_reviews }}/5 <i class="far fa-star text-warning"></i></h6>
           </div>
           {% if request.user.is_authenticated %}
             {% if can_add %}
