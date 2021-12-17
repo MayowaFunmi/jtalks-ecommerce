@@ -11,15 +11,15 @@
             {% for item in cart %}
                 <li>
                     {{ item.quantity }}x {{ item.product.name }}
-                    <span>N{{ item.total_price }}</span>
+                    <span>&#8358;{{ item.total_price }}</span>
                 </li>
             {% endfor %}
         </ul>
-        <p>Total: N{{ cart.get_total_price }}</p>
+        <p>Total: &#8358;{{ cart.get_total_price }}</p>
     </div>
 
     <form method="post" class="order-form">
-        <p>Pay total sum of N{{ cart.get_total_price }}</p><br>
+        <p>Pay total sum of &#8358;{{ cart.get_total_price }}</p><br>
         {{ form.as_p }}
         <p><input type="submit" value="Place order"></p>
         {% csrf_token %}

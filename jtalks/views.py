@@ -15,8 +15,7 @@ def home(request):
     categories = Category.objects.all()
     courses = Courses.objects.all().order_by('-id')[:2]
     for course in courses:
-        print(course.id)
-        print(course.slug)
+        print(course.is_featured)
     total_data = Courses.objects.count()
 
     # for products

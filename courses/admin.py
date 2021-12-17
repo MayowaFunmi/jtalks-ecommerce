@@ -4,9 +4,9 @@ from .models import Category, Courses, CourseReview, UserLibrary
 
 @admin.register(Courses)
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'slug', 'price','available', 'created', 'updated']
+    list_display = ['id', 'name', 'slug', 'price', 'available', 'created', 'updated', 'is_featured']
     list_filter = ['available', 'created', 'updated']
-    list_editable = ['price', 'available']
+    list_editable = ['price', 'available', 'is_featured']
     prepopulated_fields = {'slug': ('name',)}
 
 

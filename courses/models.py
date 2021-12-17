@@ -1,7 +1,5 @@
-import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import Avg
 from products.models import random_code
 
 User = get_user_model()
@@ -47,6 +45,7 @@ class Courses(models.Model):
 
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -59,19 +58,6 @@ class Courses(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_avg_rating(self):
-        reviews = CourseReview.objects.filter(course=self).aggregate(rating_avg=Avg('review_rating'))
-        return reviews['rating_avg']
-
-    def get_avg_rating1(self):
-        reviews = CourseReview.objects.filter(course=self)
-        print(reviews)
-        count = len(reviews)
-        sum = 0
-        for review in reviews:
-            sum += review.review_rating
-        return sum/count
 
 
 class CourseReview(models.Model):

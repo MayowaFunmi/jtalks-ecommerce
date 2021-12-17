@@ -31,7 +31,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="course_id" value="{{ course.id }}">
                     <input type="hidden" name="course_price" value="{{ course.price }}">
-                    <input type="submit" class="btn btn-primary" value="Pay ${{ course.price}}">
+                    <input type="submit" class="btn btn-primary" value="Pay &#8358;{{ course.price}}">
                   </form>
                 </div>
               </div>
