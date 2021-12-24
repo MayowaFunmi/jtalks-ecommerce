@@ -6,22 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d923b099-914b-4eb5-b4bf-fa508a6f1a53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/content/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/content/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/content/user_library.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/content/user_library.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/course_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/course_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/templates/courses/search_courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/courses/templates/courses/search_courses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/course-inner.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/course-inner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/course.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/course.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/more_courses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/more_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/more_products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/product_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/product_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/templates/jtalks/search_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/templates/jtalks/search_products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtalks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/jtalks/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/templates/products/create_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/create_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/templates/products/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/forum/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/templates/forum/post_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/forum/templates/forum/post_new.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/forum/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

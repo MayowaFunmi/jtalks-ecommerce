@@ -73,6 +73,7 @@ def post_create(request):
         user_category = request.POST['category']
         title = request.POST['title']
         body = request.POST['body']
+        image = request.FILES['photo']
 
         t_str = title.lower()
         for i in range(0, len(t_str), 1):
@@ -81,7 +82,7 @@ def post_create(request):
 
         category = Category.objects.get(name=user_category)
 
-        new_post = Post.objects.create(author=request.user, slug=t_str, title=title, body=body)
+        new_post = Post.objects.create(author=request.user, slug=t_str, title=title, body=body, image=image)
         new_post.save()
         new_post.categories.add(category)
         return redirect('/forum/')

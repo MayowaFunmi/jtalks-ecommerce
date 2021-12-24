@@ -21,6 +21,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=250, unique_for_date='date', null=True, blank=True)
     title = models.CharField(max_length=255)
     body = models.TextField()
+    image = models.ImageField(upload_to='blog images/', null=True)
     likes = models.ManyToManyField(User, related_name='blog_post', null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
     updated_on = models.DateTimeField(auto_now=True)
